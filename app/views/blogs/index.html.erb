@@ -21,7 +21,7 @@
         <td><%= blog.author %></td>
         <td><%= blog.emails %></td>
         <td><%= blog.content %></td>
-        <td><%= link_to 'Send Email', send_to_emails_blog_path(blog), method: :post %></td>
+        <td><%= link_to 'Send Email', send_to_emails_blog_path(blog), method: :post, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
