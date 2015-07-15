@@ -48,6 +48,7 @@ class BlogsController < ApplicationController
   # POST /blog/1/send_to_emails
   def send_to_emails
     BlogMailer.send_blog_to_emails(@blog.id).deliver_now
+    redirect_to blogs_url, notice: 'Email was successfully sent.'
   end
 
   private
