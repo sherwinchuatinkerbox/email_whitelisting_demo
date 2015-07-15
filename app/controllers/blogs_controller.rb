@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :send_to_emails]
 
   # GET /blogs
   def index
@@ -43,6 +43,11 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_url, notice: 'Blog was successfully destroyed.'
+  end
+
+  # POST /blog/1/send_to_emails
+  def send_to_emails
+    BlogMailer.send_blog_to_emails(@blog.id).deliver_now
   end
 
   private
